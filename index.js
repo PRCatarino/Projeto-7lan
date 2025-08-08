@@ -278,6 +278,10 @@ function createSerialInputs(equipmentItem, quantity, equipmentName) {
             serialGroup.className = 'serial-input-group';
             serialGroup.style.animation = 'slideDown 0.3s ease-out';
 
+            const patrimonioGroup = document.createElement('div');
+            serialGroup.className = 'serial-input-group';
+            serialGroup.style.animation = 'slideDown 0.3s ease-out';
+
             const label = document.createElement('label');
             label.textContent = `${i}°:`;
             label.className = 'serial-label';
@@ -289,9 +293,18 @@ function createSerialInputs(equipmentItem, quantity, equipmentName) {
             input.setAttribute('data-equipment', equipmentName.toLowerCase());
             input.setAttribute('data-index', i);
 
+            const inputPatrimonio = document.createElement('input');
+            inputPatrimonio.type = 'text';
+            inputPatrimonio.className = 'serial-number-input';
+            inputPatrimonio.placeholder = `Patrimoinio ${i}`;
+            inputPatrimonio.setAttribute('data-equipment', equipmentName.toLowerCase());
+            inputPatrimonio.setAttribute('data-index', i);
+
             serialGroup.appendChild(label);
             serialGroup.appendChild(input);
+            patrimonioGroup.appendChild(inputPatrimonio);
             serialContainer.appendChild(serialGroup);
+            serialContainer.appendChild(patrimonioGroup)
         }
     } else if (quantity < currentInputs) {
         // Remove inputs excedentes
@@ -429,6 +442,20 @@ function previewPhotos(input) {
         reader.readAsDataURL(file);
     });
 }
+
+function addObservation() {
+    const container = document.getElementById('obs-container');
+
+    // Verifica se o campo já existe
+    if (container.querySelector('.observation-field')) return;
+
+    const textarea = document.createElement('textarea');
+    textarea.className = 'observation-field';
+    textarea.placeholder = 'Digite sua observação...';
+
+    container.appendChild(textarea);
+}
+
     // Limpa o valor do input para permitir reenviar a mesma foto depois, se quiser
 
 
