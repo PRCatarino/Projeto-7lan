@@ -442,7 +442,9 @@ function previewPhotos(input) {
         reader.readAsDataURL(file);
     });
 }
-
+const addBtn = document.querySelector(".add-btn").addEventListener('click',()=>{
+    addObservation();
+})
 function addObservation() {
     const container = document.getElementById('obs-container');
 
