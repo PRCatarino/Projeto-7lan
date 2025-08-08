@@ -385,6 +385,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+let photoCount = 0; // contador de fotos total
+
+function previewPhotos(input) {
+    const previewContainer = document.getElementById('photo-preview');
+    const files = input.files;
+
+    if (!files || files.length === 0) {
+        return;
+    }
+
+    Array.from(files).forEach((file) => {
+        if (!file.type.startsWith('image/')) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            photoCount++; // aumenta o contador total de fotos
+
+            // Cria o container da foto + info
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+
+            // Título com número da foto
+            const title = document.createElement('div');
+            title.className = 'photo-title';
+            title.textContent = `Foto ${photoCount}`;
+
+            // Imagem
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = `Foto ${photoCount}`;
+
+            // Campo de texto
+            const textarea = document.createElement('textarea');
+            textarea.placeholder = 'Descreva esta foto...';
+
+            // Monta o bloco
+            card.appendChild(title);
+            card.appendChild(img);
+            card.appendChild(textarea);
+            previewContainer.appendChild(card);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+    // Limpa o valor do input para permitir reenviar a mesma foto depois, se quiser
+
+
+
+
 // Exemplo de como usar na função generatePDF() - adicione esta parte na sua função existente:
 /*
 // Na sua função generatePDF(), após coletar os dados dos equipamentos, adicione:
