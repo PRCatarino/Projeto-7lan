@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Lan - Relatório Fotográfico de Entrega</title>
+    <link rel="stylesheet" href="/index.css"/>
+    <link rel="stylesheet" href="/mock.css"/>
+</head>
+<body>
+    <div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo"><img src="/Logo.png"></div>
+
+            <div class="header-info">
+                <h1>RELATÓRIO FOTOGRÁFICO DE UNIDADE PARA ENTREGA AO CONTRATANTE</h1>
+                <div class="contract-info">
+                    <span>CLIENTE: <input type="text" style="border: none; background: transparent; width: 200px;" placeholder="Nome do Cliente"></span>
+                    <span>CONTRATO: <input type="text" style="border: none; background: transparent; width: 100px;" placeholder="Nº"></span>
+                    <span>DATA: <input type="date" style="border: none; background: transparent;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Service Information -->
+        <div class="form-section">
+            <h2>Informações do Serviço</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="service-description">Descrição do Serviço Realizado:</label>
+                    <input type="text" id="service-description" placeholder="Ex: Instalação de Segurança Patrimonial">
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipment Section -->
+        <div class="form-section">
+            <h2>Equipamentos</h2>
+            <div class="equipment-grid">
+                <div class="equipment-item">
+                    <span>Central de Alarme</span>
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="equipment-item">
+                    <span>Cornetas</span>
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="equipment-item">
+                    <span>Sirenes</span>
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="equipment-item">
+                    <span>Sensores</span>
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="equipment-item">
+                    <span>Repetidores</span>
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="equipment-item">
+                    <span>Teclados</span>
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="equipment-item">
+                    <span>Câmeras</span>
+                    <input type="number" value="0" min="0">
+                </div>
+                <div class="equipment-item">
+                    <span>TVs</span>
+                    <input type="number" value="0" min="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="form-section">
+            <h2>Localização</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="local">Local:</label>
+                    <input type="text" id="local" placeholder="Nome do local">
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" placeholder="Endereço completo">
+                </div>
+            </div>
+            
+            <div class="location-section">
+                <button class="location-btn" onclick="getLocation()">📍 Obter Localização Atual</button>
+            </div>
+            
+            <div id="location-status"></div>
+        </div>
+
+        <!-- Photo Upload Section -->
+        <div class="form-section">
+            <h2>Fotos do Relatório</h2>
+            <div class="photo-upload" onclick="document.getElementById('photos').click()">
+                <p>📸 Clique aqui para adicionar fotos</p>
+                <p style="font-size: 14px; color: #666; margin-top: 10px;">Suporte para múltiplas fotos (JPG, PNG)</p>
+                <input type="file" id="photos" multiple accept="image/*" onchange="previewPhotos(this)">
+                <button type="button" class="upload-btn">Selecionar Fotos</button>
+            </div>
+            <div id="photo-preview" class="photo-preview"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">7Lan</div>
+            <div class="footer-info">
+                <p>Sistema de Relatórios Fotográficos</p>
+                <p>© 2024 7Lan Tecnologia. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-info">
+                <p>Desenvolvido com tecnologia avançada</p>
+                <p>Para suporte: contato@7lan.com</p>
+            </div>
+        </div>
+    </div>
+    <script src="/mock.js"></script>
+    <script src="/index.js"></script>
+</body>
